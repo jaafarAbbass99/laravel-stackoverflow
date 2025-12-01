@@ -1,0 +1,33 @@
+
+
+<header class="bg-red-100 border-t-3 border-orange-700 h-10 lg:max-w-auto max-w-auto text-sm mb-6 not-has-[nav]:hidden flex items-center justify-content ">
+    
+    <nav class="flex items-center justify-around px-9  gap-1">
+        
+        <a class="inline-block hover:rounded-sm hover:bg-gray-300 " href="{{ url('/home') }}" >
+            <img class="max-w-32 p-2 " src="{{asset('stackoverflowicon.svg')}}" alt="">
+        </a>
+        
+{{-- inline-block px-3 py-1 text-lg text-gray-700 hover:bg-gray-300 rounded-xl --}}
+        <div class="content flex items-center justify-content">
+            <a class="  " href="">About</a>
+            <a class="" href="">Product</a>
+            <a class="" href="">For Teams</a>    
+        </div>
+        
+        <div class="auth">
+            <a
+                href="{{ route('login') }}"
+                class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] text-sky-700  border border-sky-700 hover:bg-sky-200 dark:hover:border-[#3E3E3A] rounded-sm text-sm leading-normal"
+            >
+                Log in
+            </a>
+            <a
+                href="{{ route('register') }}"
+                class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:bg-sky-900 border text-neutral-50 bg-sky-700 dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal">
+                Sign in
+            </a>
+        </div>
+    </nav>
+    
+</header>
