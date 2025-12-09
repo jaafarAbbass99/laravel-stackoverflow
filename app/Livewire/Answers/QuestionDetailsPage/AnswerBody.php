@@ -1,24 +1,29 @@
 <?php
 
-namespace App\Livewire;
 
+namespace App\Livewire\Answers\QuestionDetailsPage;
+
+use App\Modules\Answer\Domain\DTO\AnswerDto;
 use Livewire\Component;
 
 class AnswerBody extends Component
 {
-    public $answer;
-    public $question;
+    // Wireable class  
+    public AnswerDto $answer;
 
-    public $questionAnswered;
+    // state
+    public bool $questionAnswered;
+    public int $canAcceptAnswer;
 
 
+    // events 
     protected $listeners = ['answerMarkedAsBest' => 'updateState'];
 
-    public function mount($answer, $questionAnswered , $question)
+    public function mount(AnswerDto $answer,bool $questionAnswered , int $canAcceptAnswer)
     {
         $this->answer = $answer;
         $this->questionAnswered = $questionAnswered;
-        $this->question = $question;
+        $this->canAcceptAnswer = $canAcceptAnswer;
     }
 
     public function updateState()

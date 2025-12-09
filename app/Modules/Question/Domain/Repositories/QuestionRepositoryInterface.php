@@ -10,5 +10,6 @@ interface QuestionRepositoryInterface
     public function findDetails(int $id): Question;
     public function getMyVote(Question $question);
     public function createVote(Question $question);
-    public function increaseVote(int $questionId,int $votesCount);
+    public function updateVote(int $questionId,int $votesCount);
+    public function setAcceptedAnswer(int $questionId , int $answerId);
 }

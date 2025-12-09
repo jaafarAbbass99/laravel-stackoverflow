@@ -17,8 +17,7 @@
     <div x-show='open'  id="comments-container" >
         {{-- comment  --}}
         @foreach ($comments as $comment)
-            <x-comment-answer wire:key="{{$comment->id}}" author="Ali" :body=" $comment->comment_text " :date="$comment->created_at" :votes="$comment->votes_count" :isAuthor="$comment->added_by===auth('web')->id() ? true : false " />
-            {{-- <x-comment-answer wire:key='{{$comment['id']}}' :author="$comment['author']" :body="$comment['body']" :date="$comment['date']" :votes="$comment['votes']" :isAuthor="$comment['isauthor']" /> --}}
+            <x-comment-answer wire:key="{{$comment->id}}" author="Ali" :body=" $comment->commentText " :date="$comment->createdAt" :votes="$comment->votesCount" :isAuthor="$comment->authorId===auth('web')->id() ? true : false " />
         @endforeach
 
     </div>

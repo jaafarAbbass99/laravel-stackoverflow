@@ -14,15 +14,15 @@
         <x-answer-header :answers="$countAnswers" :sortingby="$sortingby" />
         
         @foreach ($answers as $answer)
-            <livewire:answer-body 
-                :answer="$answer" 
+            <livewire:answers.question-details-page.answer-body 
+                :answer="$answer"
                 :question-answered="$questionAnswered"
-                :question="$question"
+                :can-accept-answer="$canAcceptAnswer"
                 wire:key="answer-{{ $answer->id }}"
             />    
         @endforeach 
 
     </section>
 
-    <livewire:add-answer :question="$question" />
+    {{-- <livewire:add-answer :question="$question" /> --}}
 </div>
