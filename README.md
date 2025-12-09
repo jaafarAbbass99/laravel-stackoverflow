@@ -41,8 +41,6 @@ Security: validation, authorization policies
 
 
 🚀 Purpose of This Repository
-<img width="1365" height="720" alt="Screenshot (221)" src="https://github.com/user-attachments/assets/83e16f64-34da-4696-bc00-ff9fb0efea09" />
-
 
 This repository serves as:
 
@@ -51,3 +49,4 @@ A portfolio project demonstrating Laravel expertise
 A reference architecture for Q&A platforms
 
 A learning resource for advanced Laravel concepts
+<img width="1365" height="720" alt="Screenshot (221)" src="https://github.com/user-attachments/assets/83e16f64-34da-4696-bc00-ff9fb0efea09" />
