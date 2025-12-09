@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
-
+use Illuminate\Support\Facades\Auth;
 
 class Answer extends Model
 {
@@ -31,5 +31,11 @@ class Answer extends Model
     {
         return $this->morphMany(Vote::class, 'votable');
     }
+
+    public function myVote()
+    {
+        return $this->morphOne(Vote::class ,'votable')->where('voted_by', Auth::id());
+    }
+    
 
 }

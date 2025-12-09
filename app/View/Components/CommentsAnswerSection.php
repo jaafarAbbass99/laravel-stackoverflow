@@ -9,12 +9,14 @@ use Illuminate\View\Component;
 class CommentsAnswerSection extends Component
 {
 
-    public function __construct(public $comments)
+    public function __construct(private $comments)
     {}
 
 
     public function render(): View|Closure|string
     {
-        return view('components.answers.comments.comments-answer-section');
+        return view('components.answers.comments.comments-answer-section',[
+            'comments'=>$this->comments
+        ]);
     }
 }

@@ -3,7 +3,7 @@
     
     <x-alert-error />
 
-    <div x-data="{ localVotes: @entangle('votes') }"
+    <div x-data="{ localVotes: @entangle('votesCount') }"
         x-on:revert-upvote.window="localVotes--"
         x-on:revert-downvote.window="localVotes++"
         class="flex flex-col items-center">
@@ -46,7 +46,7 @@
         
         @if ($accepted)
             <x-lucide-check stroke-width="6" class="w-8 h-8 text-green-700 my-2"/>
-        @elseif (!$showCheck && auth('web')->id() == $this->answer->question->user_id)
+        @elseif (!$questionAnswered && $canAcceptAnswer)
             <button wire:click="makeAccepted" type="button" class=" cursor-pointer">
                 <x-lucide-check stroke-width="6" class="w-8 h-8 text-gray-300 my-2"/>
             </button>

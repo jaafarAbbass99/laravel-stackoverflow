@@ -38,9 +38,15 @@ class EloquentQuestionRepository implements QuestionRepositoryInterface
             ]);
     }
 
-    public function increaseVote(int $questionId,int $votesCount):bool
+    public function updateVote(int $questionId,int $votesCount):bool
     {
         return Question::where('id',$questionId)->update(['votes_count'=>$votesCount]);
     }
+
+    public function setAcceptedAnswer(int $questionId , int $answerId){
+        Question::where('id',$questionId)
+                ->update(['accepted_answer_id' => $answerId]);
+    }
+
 
 }

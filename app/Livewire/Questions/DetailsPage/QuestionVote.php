@@ -24,6 +24,7 @@ class QuestionVote extends Component
         $this->vote_type = $questionsDto->myVote?->voteType ?? 0;
         $this->votesCount = $questionsDto->votesCount;
     }
+    
     public function boot(QuestionVoteService $service)
     {
         $this->service = $service;

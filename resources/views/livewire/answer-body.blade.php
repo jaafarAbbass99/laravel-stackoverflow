@@ -4,7 +4,7 @@
 
 <section id="body" class="border-b text-sm border-gray-300 mt-4 grid grid-cols-[auto_auto] grid-rows-[auto_auto]">
 
-    <livewire:answer-vote :answer="$answer" :show-check="$questionAnswered" :question="$question" />
+    <livewire:answers.question-details-page.answer-vote :answer-dto="$answer" :question-answered="$questionAnswered" :can-accept-answer="$canAcceptAnswer" />
     
     <div id="right">
 
@@ -16,11 +16,11 @@
             {{-- datetime edited --}}
 
             <x-user-card 
-                :user-name="$question->user->name"
+                :user-name="$answer->author->name"
                 img="unnamed.jpg"
                 reputation="30"
                 type="answered"
-                date="{{ $answer->created_at->format('M j, Y \a\t H:i') }}"
+                date="{{ $answer->createdAt->format('M j, Y \a\t H:i') }}"
             />
 
         </div>

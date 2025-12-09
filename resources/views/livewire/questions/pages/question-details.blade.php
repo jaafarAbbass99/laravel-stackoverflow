@@ -25,7 +25,7 @@
         <x-questions.detailsPage.question-body :question="$question" />
         
 
-        {{-- <livewire:answers :question="$question" /> --}}
+        <livewire:answers.questionDetailsPage.answers :question="$question" />
 
     </div>
 </div>

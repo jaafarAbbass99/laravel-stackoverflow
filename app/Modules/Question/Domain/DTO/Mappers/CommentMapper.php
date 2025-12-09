@@ -13,6 +13,7 @@ class CommentMapper
         return new CommentDto(
             id: $comment->id,
             commentText: $comment->comment_text,
+            votesCount : $comment->votes_count,
             createdAt: $comment->created_at,
             updatedAt: $comment->updated_at,
             commentableId: $comment->commentable_id,

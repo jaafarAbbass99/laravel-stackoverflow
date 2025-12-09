@@ -16,8 +16,8 @@ class QuestionGuard {
     ){
         return DB::transaction(function () use ($questionId, $callback) {
 
-            $question = Question::select('id', 'status')
-                ->where('id', $questionId)
+            $question = Question::
+                where('id', $questionId)
                 ->lockForUpdate()
                 ->firstOrFail();
 
