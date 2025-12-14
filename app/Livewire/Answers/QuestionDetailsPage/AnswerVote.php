@@ -6,9 +6,6 @@ namespace App\Livewire\Answers\QuestionDetailsPage;
 use App\Modules\Answer\Domain\DTO\AnswerDto;
 use App\Modules\Answer\Domain\Rules\CanAcceptAnswer;
 use App\Modules\Answer\Domain\Services\AnswerVoteService;
-use App\Modules\Question\Domain\DTO\QuestionDto;
-use App\Modules\Question\Domain\Services\QuestionVoteService;
-use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 

@@ -2,44 +2,66 @@
 
 namespace App\Livewire\Answers\QuestionDetailsPage;
 
-use App\Models\Answer;
-use App\Models\Question;
+use App\Modules\Answer\Domain\DTO\CreateAnswerDto;
+use App\Modules\Answer\Domain\Services\AnswerService;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class AddAnswer extends Component
 {
-    public Question $question ;
+    
+    private AnswerService $answerService;
 
+    public int $questionId ;
 
     #[Validate('required|min:15')]
     public string $description = '' ;
 
-    public function mount(Question $question)
+    public function mount(int $questionId)
     {
-        $this->question = $question;
+        $this->questionId = $questionId;
+    }
+
+    public function boot(AnswerService $answerService )
+    {
+        $this->answerService = $answerService ;
     }
     
     public function createAnswer(){
+        
         $this->validate();
-        try{
-            $this->question->answers()->create([
-                'description'=>$this->description,
-                'user_id'=> auth('web')->id(),
-            ]);
-    
-            $this->reset('description');
-            $this->dispatch('answer-added');
 
-            session()->flash('success', 'Your answer has been posted successfully.');
+        if (!auth('web')->check()) {
+            return redirect()->route('login');
+        }
+        
+        try{
+            
+            $this->answerService->createAnswer(
+                CreateAnswerDto::fromArray([
+                    'description' => $this->description,
+                    'questionId'=>$this->questionId,
+                ])
+            );
+
+            $this->reset('description');
+            
+            // Events
+            $this->dispatch('answer-added');
+            $this->dispatch('toast-success', message: 'Your answer has been posted successfully.' );
+
         }catch(\Exception $e){
-            session()->flash('error', 'Something went wrong while posting your answer. Please try again.');
+
+            $this->dispatch('toast-error', message: $e->getMessage());
+
+            $this->reset('description');
+
         }
 
     }
 
     public function render()
     {
-        return view('livewire.add-answer');
+        return view('livewire.answers.questionDetailsPage.add-answer');
     }
 }

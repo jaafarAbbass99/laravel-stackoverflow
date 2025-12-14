@@ -24,5 +24,5 @@
 
     </section>
 
-    {{-- <livewire:add-answer :question="$question" /> --}}
+    <livewire:answers.question-details-page.add-answer :question-id="$questionId" />
 </div>

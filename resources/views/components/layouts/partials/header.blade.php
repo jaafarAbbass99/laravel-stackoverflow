@@ -72,7 +72,14 @@
                 </div>
                 @endguest
                 @auth
-                    <li><a href="{{ url("logout") }}">logout</a></li>
+                    <form method="POST" action="{{ route('logout') }}" x-data>
+                        @csrf
+                        <a href="#"
+                        @click.prevent="$el.closest('form').submit()"
+                        class="text-gray-600 hover:text-red-600">
+                            Logout
+                        </a>
+                    </form>
                 @endauth
 
             </div>

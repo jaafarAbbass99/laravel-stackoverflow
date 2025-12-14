@@ -8,6 +8,7 @@ use App\Models\Question;
 interface AnswerRepositoriesInterface {
 
     public function getAnswersDetailsForQuestion(int $questionId) ;
+    public function createAnswerForQuestion(int $questionId , string $description):Answer;
     public function updateCountAnswerForQuestion(int $questionId , int $NewcountAnswer):bool ;
     public function createVote(int $answerId,int $voteUpDown);
     public function incrementVote(int $answerId);
