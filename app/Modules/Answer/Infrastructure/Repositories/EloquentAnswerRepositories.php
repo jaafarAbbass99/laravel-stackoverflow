@@ -45,11 +45,11 @@ class EloquentAnswerRepositories implements AnswerRepositoriesInterface
     }
 
     public function incrementVote(int $answerId){
-        return Answer::where('id',$answerId)->increment(['votes_count']);
+        return Answer::where('id',$answerId)->increment('votes_count');
     }
 
     public function decrementVote(int $answerId){
-        return Answer::where('id',$answerId)->decrement(['votes_count']);
+        return Answer::where('id',$answerId)->decrement('votes_count');
     }
 
     public function markAsAccepted(int $answerId){
