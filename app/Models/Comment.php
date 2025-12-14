@@ -15,6 +15,10 @@ class Comment extends Model
         'comment_text' , 'votes_count' , 'added_by' , 'commentable_id' , 'commentable_type'
     ];
 
+    protected $attributes = [
+        'votes_count' => 0,
+    ];
+
     public function commentable()
     {
         return $this->morphTo();
@@ -29,9 +33,5 @@ class Comment extends Model
     {
         return $this->morphMany(Vote::class, 'votable');
     }
-
-    
-
-
     
 }
