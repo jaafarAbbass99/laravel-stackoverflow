@@ -20,6 +20,16 @@ class EloquentAnswerRepositories implements AnswerRepositoriesInterface
                 'myVote',
             ])->get();
     }
+
+    public function createAnswerForQuestion(int $questionId , string $description):Answer
+    { 
+        return Answer::create([
+            'description'=>$description,
+            'user_id'=> Auth::id(),
+            'question_id'=> $questionId
+        ]);
+    }
+    
     public function updateCountAnswerForQuestion(int $questionId , int $NewcountAnswer):bool
     {
         return Question::whereId($questionId)->update(['answers_count' , $NewcountAnswer]);
@@ -35,11 +45,11 @@ class EloquentAnswerRepositories implements AnswerRepositoriesInterface
     }
 
     public function incrementVote(int $answerId){
-        return Answer::where('id',$answerId)->increment(['votes_count']);
+        return Answer::where('id',$answerId)->increment('votes_count');
     }
 
     public function decrementVote(int $answerId){
-        return Answer::where('id',$answerId)->decrement(['votes_count']);
+        return Answer::where('id',$answerId)->decrement('votes_count');
     }
 
     public function markAsAccepted(int $answerId){

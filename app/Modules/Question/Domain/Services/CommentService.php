@@ -45,7 +45,7 @@ class CommentService
             if (! $comment) {
                 throw new \DomainException('Failed to create comment');
             }
-    
+            
             return CreateCommentMapper::fromModel(
                 comment: $comment,
                 authorId: Auth::id(),
@@ -70,9 +70,9 @@ class CommentService
 
     public function deleteCommentForQuestion(int $questionId , int $commentId){
         
-        return QuestionGuard::withOpenQuestion($questionId , function() use($questionId, $commentId ){
+        return QuestionGuard::withOpenQuestion($questionId , function() use($commentId ){
             
-            $deleted = $this->commentRepo->deleteComment($questionId , $commentId, Auth::id());
+            $deleted = $this->commentRepo->deleteComment($commentId, Auth::id());
     
             if (! $deleted) {
                 throw new \DomainException('Unable to delete comment.');

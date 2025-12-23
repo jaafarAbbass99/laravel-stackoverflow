@@ -81,8 +81,6 @@ class CommentsSection extends Component
 
             $this->editingId = null;
 
-            
-
             $this->dispatch('toast-success', message: 'Comment updated successfully');
 
         } catch (\DomainException $e) {
